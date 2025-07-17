@@ -14,7 +14,7 @@ const FAQItem = ({ item, onClick, openId }) => {
           <i className='bx bx-plus text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-white text-xl'></i>
         </div>
       </button>
-      <div className='overflow-hidden' id={`answer-${item.id}`} ref={answerRef} style={{maxHeight: openId ? answerRef.current?.scrollHeight : 0, opacity:openId ? 1 : 0}}>
+      <div className='overflow-hidden transition-all duration-300' id={`answer-${item.id}`} ref={answerRef} style={{maxHeight: openId ? answerRef.current?.scrollHeight : 0, opacity:openId ? 1 : 0}}>
 
         <div className='p-4 pt-0 pb-5 text-gray-600 dark:text-gray-300'>
           <div className='p-3 rounded-lg overflow-y-auto max-h-[300px]'>{item.answers}</div>
