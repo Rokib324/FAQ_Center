@@ -1,14 +1,10 @@
-import { useState } from 'react'
 import React from 'react'
 import FAQItem from './FAQItem'
+import { faqData } from '../data/faqData'
 
 
-const FAQList = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+const FAQList = ({ toggleDarkMode, darkMode }) => {
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-  }
   return (
     <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
         <div className='flex flex-col sm:flex-row justify-between items-center mb-8 gap-4'>
@@ -19,12 +15,13 @@ const FAQList = () => {
                 <i className='bx bx-collapse-alt text-lg'></i>
                     <span>Expand All</span>
                 </button>
-                <button className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-gray-200 to-gray-300 text-gray-700 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition-all duration-300 cursor-pointer' onClick={toggleDarkMode}>
-                  <i className='bx bx-moon text-lg'></i>
+                <button className='w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-gray-200 to-gray-300 text-gray-700 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition-all duration-300 cursor-pointer dark:from-gray-700 dark:to-gray-800 dark:text-gray-200' onClick={toggleDarkMode}>
+                  <i className={`bx bx-${darkMode ? 'sun' : 'moon'} text-lg`}></i>
                 </button>
             </div>
         </div>
-      <FAQItem />
+        
+      
     </div>
   )
 }
