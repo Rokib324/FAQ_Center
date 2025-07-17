@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import FAQList from './components/FAQList'
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('isDarkMode')
+    return savedMode ? JSON.parse(savedMode) : false
+
+  })
 
   useEffect(() => {
     if (isDarkMode) {
@@ -9,12 +13,14 @@ const App = () => {
     } else {
       document.documentElement.classList.remove('dark')
     }
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode))
+
   }, [isDarkMode])
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
 
-
+  
   }
   return (
     <div className='min-h-screen bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors duration-300'>
