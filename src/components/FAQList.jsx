@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FAQItem from './FAQItem'
 import { faqData } from '../data/faqData'
 
@@ -23,6 +23,17 @@ const FAQList = ({ toggleDarkMode, darkMode }) => {
     setIsExpandAll((prev) => !prev)
     setOpenId(null)
   }
+
+  useEffect(() => {
+    if (openId && typeof window !== 'undefined') {
+      setTimeout(() => {
+        const element = document.getElementById(`faq-item-${openId}`)
+        if (element) {
+          element.scrollIntoView({behavior: 'smooth', block: 'start'})
+        }
+      }, 100)
+    }
+  }, [openId])
 
 
 
