@@ -20,7 +20,11 @@ const FAQList = ({ toggleDarkMode, darkMode }) => {
                 </button>
             </div>
         </div>
-        
+        <div className='bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-lg border border-indigo-100/50 dark:border-indigo-900/30 overflow-hidden transition-all duration-300'>
+          {faqData.map((item) => (
+            <FAQItem key={item.id} item={item} />
+          ))}
+        </div>
       
     </div>
   )
